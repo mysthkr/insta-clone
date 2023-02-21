@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_current_user, only: [:edit, :update]
   
   def index
     @pictures = Picture.all
@@ -67,5 +68,12 @@ class PicturesController < ApplicationController
 
   def post_params
     params.require(:picture).permit(:image, :image_cache, :comment)
+  end
+  
+  def ensure_current_user
+    if @current_user.id != params[:id].to_i
+      flash[:notice]="権限がありません"
+      redirect_to("/posts/index")
+    end
   end
 end
