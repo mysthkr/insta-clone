@@ -4,6 +4,8 @@ class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
     @users = User.all
+    # @favorite = @favorites.where(user_id: current_user.id)
+    @favorites = Favorite.all.where(user_id: current_user.id)
   end
   
   def new

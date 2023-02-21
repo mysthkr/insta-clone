@@ -10,6 +10,7 @@
       <td class="card-body">Comment : <%= picture.comment %></td>
       <td>
         <% unless picture.user_id == current_user.id %>
+          <% @favorite = @favorites.find_by(picture_id: picture.id) %>
           <% if @favorite.present? %>
             <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
           <% else %>
@@ -18,8 +19,10 @@
         <% end %>
       </td>
       <td><%= link_to '詳細を確認する', picture_path(picture.id) %></td>
-      <td><%= link_to "投稿を編集する", edit_picture_path(picture.id), mothod: :get , data: { confirm: '本当に編集していいですか？' } %></td>
-      <td><%= link_to '投稿を削除する', picture_path(picture.id), method: :delete , data: { confirm: '本当に削除していいですか？' } %></td>
+      <% if picture.user_id == current_user.id %>
+        <td><%= link_to "投稿を編集する", edit_picture_path(picture.id), mothod: :get , data: { confirm: '本当に編集していいですか？' } %></td>
+        <td><%= link_to '投稿を削除する', picture_path(picture.id), method: :delete , data: { confirm: '本当に削除していいですか？' } %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
