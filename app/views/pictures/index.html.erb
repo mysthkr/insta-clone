@@ -1,23 +1,18 @@
-<h2>画像を投稿する</h2>
+<h2>投稿一覧</h2>
 
-<%= form_with(model: @picture, local: true) do |form| %>
-  <% if @picture.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
-      <ul>
+<p><%= notice %></p>
 
-      <% @picture.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<table>
+  <% @pictures.each do |picture| %>
+    <tr class="card" style="width: 18rem;">
+      <td><%= image_tag picture.image.url %></td>
+      <td>User Name : <%= (@users.find_by(id: picture.user_id)).name %></td>
+      <td class="card-body">Comment : <%= picture.comment %></td>
+      <td><%= link_to '詳細を確認する', picture_path(picture.id) %></td>
+      <td><%= link_to "投稿を編集する", edit_picture_path(picture.id), data: { confirm: '本当に編集していいですか？' } %></td>
+      <td><%= link_to '投稿を削除する', picture_path(picture.id), method: :delete , data: { confirm: '本当に削除していいですか？' } %></td>
+    </tr>
   <% end %>
+</table>
 
-  <div class="content_title">
-    <%= form.label :comment %>
-    <%= form.text_field :comment %>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-  <%= form.submit %>
-<% end %>
+<%= link_to '投稿画面へ戻る', new_picture_path %>
