@@ -36,12 +36,15 @@
       <div class="localNavigation">
         <p>ローカルナビゲーション</p>
         <ul>
-          <li>
-            <%= link_to '投稿画像一覧', pictures_path %>
-          </li>
-          <li>
-            <%= link_to 'お気に入り一覧', favo_picture_path(current_user.id) %>
-          </li>
+          <% if logged_in? %>
+            <li>
+              <%= link_to '投稿画像一覧', pictures_path %>
+            </li>
+            <li>
+              <%= link_to 'お気に入り一覧', favo_picture_path(current_user.id) %>
+            </li>
+          <% else %>
+          <% end %>
         </ul>
       </div>
       <div class="content-area">

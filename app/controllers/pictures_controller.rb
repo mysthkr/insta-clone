@@ -43,7 +43,10 @@ class PicturesController < ApplicationController
   end
   
   def favo
-    @favorite = current_user.favorites.find(params[:id])
+    # @favorite = current_user.favorites.find(user_id: params[:id])
+    @favorites = Favorite.where(user_id: current_user.id)
+    @pictures = Picture.all
+    @users = User.all
   end
   
   def confirm

@@ -1,0 +1,16 @@
+<h2>お気に入り投稿一覧</h2>
+
+<p><%= notice %></p>
+
+<table>
+  <% @favorites.each do |favorite| %>
+    <% picture=@pictures.find_by(id: favorite.picture_id) %>
+    <tr class="card" style="width: 18rem;">
+      <td><%= image_tag picture.image.url %></td>
+      <td>User Name : <%= (@users.find_by(id: picture.user_id)).name %></td>
+      <td class="card-body">Comment : <%= picture.comment %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to '投稿一覧画面へ戻る', pictures_path %>
