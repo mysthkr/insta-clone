@@ -42,6 +42,10 @@ class PicturesController < ApplicationController
     end
   end
   
+  def favo
+    @favorite = current_user.favorites.find(params[:id])
+  end
+  
   def confirm
     @picture = current_user.pictures.build(post_params)
     render :new if @picture.invalid?
