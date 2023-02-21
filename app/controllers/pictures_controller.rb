@@ -11,8 +11,8 @@ class PicturesController < ApplicationController
   end
   
   def create
-    # @picture = current_user.pictures.build(post_params)
-    @picture = Picture.new(post_params)
+    @picture = current_user.pictures.build(post_params)
+    # @picture = Picture.new(post_params)
     
     if params[:back]
       render :new
