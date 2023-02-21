@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     member do
       get 'favo', action: 'favo'
     end
+    collection do
+      post :confirm
+    end
   end
 end
