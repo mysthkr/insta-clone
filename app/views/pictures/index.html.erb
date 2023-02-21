@@ -1,2 +1,23 @@
-<h1>Pictures#index</h1>
-<p>Find me in app/views/pictures/index.html.erb</p>
+<h2>画像を投稿する</h2>
+
+<%= form_with(model: @picture, local: true) do |form| %>
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
+      <ul>
+
+      <% @picture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="content_title">
+    <%= form.label :comment %>
+    <%= form.text_field :comment %>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+  <%= form.submit %>
+<% end %>
