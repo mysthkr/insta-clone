@@ -5,6 +5,7 @@
   <%= form.hidden_field :comment %>
 
   <p>写真:<%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p>
+  <%= form.hidden_field :image_cache %>
   <p>コメント:<%= @picture.comment %></p>
   <%= form.submit  "登録する" %>
   
