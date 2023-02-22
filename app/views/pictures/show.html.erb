@@ -1,2 +1,18 @@
-<h1>Pictures#show</h1>
-<p>Find me in app/views/pictures/show.html.erb</p>
+<h2>投稿詳細画面</h2>
+
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr class="content">
+    <td>
+      <strong>Image:</strong>
+      <%= image_tag @picture.image.url %>
+    </td>
+  </tr>
+  <tr>
+    <td>コメント: <%= @picture.comment %></td>
+  </tr>
+</table>
+
+<%= link_to 'Edit', edit_picture_path(@picture) , data: { confirm: '本当に編集していいですか？' } if @picture.user_id == current_user.id %> |
+<%= link_to 'Back', pictures_path %>
