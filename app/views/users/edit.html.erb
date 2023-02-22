@@ -1,0 +1,30 @@
+<h2>投稿を編集する</h2>
+<%= form_with(model: @user, local: true ,url: choose_new_or_edit ) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this feed from being saved:</h2>
+
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="content">
+    <%= form.label :user_image %>
+    <%= image_tag(@user.user_image.url) if @user.user_image && @user.user_image.url %>
+    <%= form.file_field :user_image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+  <div class="comment">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+

@@ -37,6 +37,11 @@
         <p>ローカルナビゲーション</p>
         <ul>
           <% if logged_in? %>
+            <% if @user.user_image.present? %>
+              <li>
+                <%= image_tag @user.user_image.url %>
+              </li>
+            <% end %>
             <li>
               <%= link_to '投稿画像一覧', pictures_path %>
             </li>
