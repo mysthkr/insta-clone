@@ -88,7 +88,13 @@ GEM
     concurrent-ruby (1.2.0)
     crass (1.0.6)
     date (3.3.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
+    faker (3.1.1)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -240,6 +246,8 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   carrierwave
+  dotenv-rails
+  faker
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mini_magick
