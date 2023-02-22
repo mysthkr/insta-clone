@@ -4,11 +4,17 @@
   <%= form.hidden_field :image %>
   <%= form.hidden_field :comment %>
 
-  <p>写真:<%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p>
-  <%= form.hidden_field :image_cache %>
-  <p>コメント:<%= @picture.comment %></p>
-  <%= form.submit  "登録する" %>
-  
+  <div class="col mb-5">
+    <div class="card h-100">
+      <p class="fw-bolder">写真:<%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p>
+      <%= form.hidden_field :image_cache, class: "card-img-top" %>
+      <div class="card-body p-4">
+        <div class="text-center">
+          <p class="fw-bolder">コメント:<%= @picture.comment %></p>
+          <%= form.submit  "登録する" %>
+        </div>
+      </div>
+    </div>
+  </div>
   <%= form.submit "戻る", name: 'back' %>
 <% end %>
-

@@ -11,17 +11,20 @@
     </div>
   <% end %>
 
-  <div class="content">
-    <%= form.label :image %>
-    <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
-    <%= form.file_field :image %>
-    <%= form.hidden_field :image_cache %>
+  <div class="col mb-5">
+    <div class="card h-100">
+      <%= form.label :image %>
+      <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+      <%= form.file_field :image %>
+      <%= form.hidden_field :image_cache %>
+      <div class="card-body p-4">
+        <div class="text-center">
+          <%= form.label :comment %>
+          <%= form.text_field :comment %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="comment">
-    <%= form.label :comment %>
-    <%= form.text_field :comment %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>

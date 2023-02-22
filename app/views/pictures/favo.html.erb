@@ -2,15 +2,21 @@
 
 <p><%= notice %></p>
 
-<table>
-  <% @favorites.each do |favorite| %>
+
+<% @favorites.each do |favorite| %>
+<div class="col mb-5">
+  <div class="card h-100">
     <% picture=@pictures.find_by(id: favorite.picture_id) %>
-    <tr class="card" style="width: 18rem;">
-      <td><%= image_tag picture.image.url %></td>
-      <td>User Name : <%= (@users.find_by(id: picture.user_id)).name %></td>
-      <td class="card-body">Comment : <%= picture.comment %></td>
-    </tr>
-  <% end %>
-</table>
+    <%= image_tag picture.image.url, class: "card-img-top" %>
+    <div class="card-body p-4">
+      <div class="text-center">
+        <p class="fw-bolder">User Name : <%= (@users.find_by(id: picture.user_id)).name %></p>
+        <p class="fw-bolder">Comment : <%= picture.comment %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
 
 <%= link_to '投稿一覧画面へ戻る', pictures_path %>

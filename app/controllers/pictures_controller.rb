@@ -5,7 +5,6 @@ class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
     @users = User.all
-    # @favorite = @favorites.where(user_id: current_user.id)
     @favorites = Favorite.all.where(user_id: current_user.id)
   end
   
@@ -19,8 +18,6 @@ class PicturesController < ApplicationController
   
   def create
     @picture = current_user.pictures.build(post_params)
-    # @picture = Picture.new(post_params)
-    
     if params[:back]
       render :new
     else

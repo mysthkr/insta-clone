@@ -5,21 +5,26 @@
     <div id="error_explanation">
       <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
       <ul>
-
-      <% @picture.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @picture.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="content_title">
-    <%= form.label :comment %>
-    <%= form.text_field :comment %>
-    <%= form.label :image %>
-    <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
-    <%= form.file_field :image %>
-    <%= form.hidden_field :image_cache %>
+  <div class="col mb-5">
+    <div class="card h-100">
+      <%= form.label :image %>
+      <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+      <%= form.file_field :image , class: "card-img-top" %>
+      <%= form.hidden_field :image_cache %>
+      <div class="card-body p-4">
+        <div class="text-center">
+          <%= form.label :comment %>
+          <%= form.text_field :comment %>
+        </div>
+      </div>
+    </div>
   </div>
   <%= form.submit %>
 <% end %>
