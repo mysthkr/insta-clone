@@ -24,5 +24,10 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
 
+  <%= f.label :user_image %>
+  <%= image_tag(@user.user_image.url) if @user.user_image && @user.user_image.url %>
+  <%= f.file_field :user_image %>
+  <%= f.hidden_field :user_image_cache %>
+  
   <%= f.submit "Create my account" %>
 <% end %>
