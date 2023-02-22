@@ -10,7 +10,11 @@ class PicturesController < ApplicationController
   end
   
   def new
-    @picture = Picture.new
+    if params[:back]
+      @picture = Picture.new(post_params)
+    else
+      @picture = Picture.new
+    end
   end
   
   def create
