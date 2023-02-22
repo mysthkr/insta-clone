@@ -4,8 +4,8 @@
   <%= form.hidden_field :image %>
   <%= form.hidden_field :comment %>
 
-  <p>タイトル:<%= @picture.image %></p>
-  <p>本文:<%= @picture.comment %></p>
+  <p>写真:<%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p>
+  <p>コメント:<%= @picture.comment %></p>
   <%= form.submit  "登録する" %>
   
   <%= form.submit "戻る", name: 'back' %>
